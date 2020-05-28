@@ -1,0 +1,22 @@
+{
+    "name": "mstevz/events",
+    "require-dev": {
+        "phpunit/phpunit": "^8.4",
+        "psr/event-dispatcher": "^1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mstevz",
+            "email": "dev.mstevz@gmail.com"
+        }
+    ],
+    "require": {
+        "mstevz/collection": "dev-development"
+    },
+    "autoload": {
+        "psr-4": {
+            "mstevz\\Events\\" : "./src"
+        }
+    }
+}
