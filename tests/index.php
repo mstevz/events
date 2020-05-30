@@ -7,6 +7,9 @@ use \mstevz\Events\EventDispatcher;
 use \mstevz\Events\Providers\ListenerProvider;
 use \mstevz\Events\Interfaces\IEventSubscriber;
 
+use \mstevz\Events\Eventful;
+
+/*
 class Reporter {
 
     private $listeners;
@@ -51,7 +54,44 @@ class TVStation {
         var_dump($e);
     }
 }
+*/
 
+class Reporter {
+
+
+    private $eventful;
+
+    public function __construct(){
+            $this->eventful = new Eventful();
+            $this->eventful->registerEvent(new Event('news_report'));
+    }
+
+    public function getSubscribed(object $listener, $handler){
+        $this->eventful->addListener($listener, $handler, 'news_report');
+    }
+
+    public function write(){
+        $this->eventful->dispatch(new Event('news_report'));
+    }
+
+}
+
+class TVStation {
+
+    private $name;
+
+    public function __construct(string $name){
+            $this->name = $name;
+    }
+
+    public function getName() : string {
+        return $this->name;
+    }
+
+    public function getNewsEvent(object $e){
+        echo "ok";
+    }
+}
 
 
 $john = new Reporter();
