@@ -75,8 +75,6 @@ class ListenerProvider implements IListenerProvider {
             $eventName = $this->getClassName($_event);
         }
 
-        var_dump($eventName);
-
         if($this->container->offsetExists($eventName)){
             throw new Exception('An event with the same name has already been registered.');
         }
@@ -150,7 +148,7 @@ class ListenerProvider implements IListenerProvider {
          Event ID is currently working as EVENT CLASS OBJECT NAME.
          */
 
-         $eventName = $this->getClassName($_event);
+         $eventName = $_event->getName();
 
         $listeners = [];
 
